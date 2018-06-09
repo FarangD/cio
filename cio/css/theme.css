@@ -1,0 +1,71 @@
+.container{
+	width: 85%;
+}
+
+.selected-language{
+	font-weight: bolder;
+	text-decoration: underline;
+	font-size: 1.2em;
+}
+
+.navbar-inverse{
+	background: transparent;
+	color: #000000;
+	border:none;
+	font-size: 1em;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
+	background: transparent;
+	border-top: 4px solid #8DCEFF;
+	color: #8DCEFF;
+}
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover{
+	background: transparent;
+	border-top: 4px solid #8DCEFF;
+	color: #8DCEFF;
+}
+
+.navbar-collapse{
+	padding-left: 10%;
+}
+
+.dropdown-menu{
+	border: none;
+	box-shadow: none;
+	width: 100%;
+}
+.dropdown-submenu{
+	border-top: 1px solid #000000;
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+}
+
+.dropdown-submenu:hover{
+	border-top: 4px solid #8DCEFF;
+	padding: 5px;
+	color: #8DCEFF !important; 
+	cursor: pointer;
+}
+
+.dropdown-submenu>a:hover{
+	border:none;
+	padding: 5px;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+	border-top: 1px solid #000000;
+	margin: 5px;
+	color:#000000;
+}
+
+ul.nav a:hover { 
+	border-top: 4px solid #8DCEFF;
+	color: #8DCEFF !important; 
+}
+
+a {
+	cursor: pointer;
+}

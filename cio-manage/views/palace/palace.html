@@ -1,0 +1,175 @@
+<div ng-include src="'views/header.html'"></div>
+
+<div class="page-header">
+	<h3>ทำเนียบ CIO</h3>
+</div>
+
+<div ng-show="PAGE == 'UPDATE'">
+	<div class="row form-group">
+		<div class="col-lg-12 text-center">
+			<img ngf-thumbnail="AttachFile" style="width: 200px; height: 200px; border-radius: 50%;" ng-show="AttachFile != null && Palace.picture_path == null">
+			<img src="{{'../'+ Palace.picture_path}}" style="width: 200px; height: 200px; border-radius: 50%;" ng-show="Palace.picture_path != null && AttachFile == null">
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<label class="col-lg-2 col-lg-offset-2 form-control-static">
+			รูปประจำตัว
+		</label>
+		<div class="col-lg-4" >
+			<p class="input-group">
+	          <input type="text" readonly="true" class="form-control" ng-model="AttachFile.name" />
+	          <span class="input-group-btn">
+	            <button class="btn btn-default" ngf-select ng-model="AttachFile" ngf-max-size="5MB"  ngf-model-invalid="AttachFile.invalidFile" accept="image/*" ngf-pattern="'.png,.jpg'" >เลือก</button>
+	          </span>
+	        </p>
+		</div>
+		<div class="col-lg-3">
+			<div class="file-alert" ng-show="fle.attachFile.invalidFile.$error === 'maxSize'">ขนาดไฟล์ต้องไม่เกิน : {{AttachFile.invalidFile.$errorParam}}</div>
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			คำนำหน้าขื่อ (TH)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.prefix_name_th">
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			คำนำหน้าขื่อ (EN)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.prefix_name_en">
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			ชื่อ (TH)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.firstname_th">
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			ชื่อ (EN)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.firstname_en">
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			สกุล (TH)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.lastname_th">
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			สกุล (EN)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.lastname_en">
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			ตำแหน่ง (TH)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.position_th">
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			ตำแหน่ง (EN)
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Palace.position_en">
+		</div>
+	</div>
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			วันที่เข้ารับตำแหน่ง
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<p class="input-group">
+				<input type="text" class="form-control" ng-model="Palace.position_start_date" uib-datepicker-popup="yyyy-MM-dd" is-open="popup1.opened" datepicker-options="dateOptions1">
+				<span class="input-group-btn">
+	            	<button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+	          </span>
+	        </p>
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			วันที่สิ้นสุด
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<p class="input-group">
+				<input type="text" class="form-control" ng-model="Palace.position_end_date" uib-datepicker-popup="yyyy-MM-dd" is-open="popup2.opened" datepicker-options="dateOptions2">
+				<span class="input-group-btn">
+	            	<button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+	          	</span>
+	        </p>
+		</div>
+	</div>
+	<div class="page-header">
+		<h3>ไฟล์แนบ</h3>
+	</div>
+
+	<div class="row form-group" ng-repeat="file in Palace.AttachFiles">
+		<div class="col-lg-12">
+			
+					<button class="btn btn-danger btn-xs" ng-click="removeAttach('attach/delete', file.id)"><span class="glyphicon glyphicon-trash"></span></button>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<a target="_self" href="{{file.file_path}}" download="{{file.file_name}}">{{file.file_name}}</a>
+				
+		</div>
+	</div>
+
+	<div class="row form-group">
+		<div class="col-lg-12">
+			<button class="btn btn-primary " ng-click="addFiles()"> เพิ่มไฟล์แนบ</button>
+		</div>
+		<div class="col-lg-12">
+			<div class="row" ng-repeat="fle in FileList">
+				<div class="col-lg-4" >
+					<p class="input-group">
+	                  <input type="text" readonly="true" class="form-control" ng-model="fle.attachFile.name" />
+	                  <span class="input-group-btn">
+	                    <button class="btn btn-default" ngf-select ng-model="fle.attachFile" ngf-max-size="25MB"  ngf-model-invalid="fle.attachFile.invalidFile">เลือก</button>
+	                  </span>
+	                </p>
+				</div>
+				<div class="col-lg-3">
+					<div class="file-alert" ng-show="fle.attachFile.invalidFile.$error === 'maxSize'">ขนาดไฟล์ต้องไม่เกิน : {{fle.attachFile.invalidFile.$errorParam}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="page-header text-center">
+		<button class="btn btn-info" ng-click="save('palaces/update', Palace, AttachFile, FileList)">บันทึก</button>
+		<button class="btn btn-default" ng-click="cancelUpdate()">ยกเลิก</button>
+	</div>
+</div>
+<div class="row form-group" ng-show="PAGE == 'MAIN'">
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>ชื่อ</th>
+					<th>สกุล</th>
+					<th>ตำแหน่ง</th>
+					<th>ช่วงระยะเวลาดำรงตำแหน่ง</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="data in PalaceList">
+					<td>
+						<button class="btn btn-default btn-xs" ng-click="edit(data)"><span class="glyphicon glyphicon-edit"></span></button>
+					</td>
+					<td>{{data.firstname_th}} ({{data.firstname_en}})</td>
+					<td>{{data.lastname_th}} ({{data.lastname_en}})</td>
+					<td>{{data.position_th}}</td>
+					<td>{{data.position_start_date}} ถึง {{data.position_end_date}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

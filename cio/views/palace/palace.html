@@ -1,0 +1,49 @@
+<div ng-include src="'views/header.html'"></div>
+
+<div  ng-repeat="Palace in PalaceList">
+	<div class="row form-group">
+		<div class="col-lg-2 col-lg-offset-1 text-center">
+			<img src="{{'../' + Palace.picture_path}}" style="width: 200px; height: 200px; border-radius: 50%;border:7px solid #8DCEFF;" ng-show="Palace.picture_path != null && AttachFile == null">
+		</div>
+		<div class="col-lg-9" style="padding-left: 5%;">
+			<div class="row form-group">
+				<div class="col-lg-12" style="font-size: 1.5em; color: #0000ff;">
+					{{Palace.prefix_name_th + ' ' + Palace.firstname_th + ' ' + Palace.lastname_th}}
+					<br>
+					({{Palace.prefix_name_en + ' ' + Palace.firstname_en + ' ' + Palace.lastname_en}})
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-lg-12">
+					{{Palace.position_th}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-lg-12">
+					{{Palace.position_en}}
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-lg-2">
+					<span bind-html-compile="DEFAULT_LANGUAGE=='TH'?'เอกสารคำสั่งแต่งตั้ง':'Appointment Document'">
+				</div>
+				<div class="col-lg-10">
+					<div class="row form-group" ng-repeat="file in Palace.AttachFiles">
+						<div class="col-lg-12">
+									&nbsp;&nbsp;&nbsp;&nbsp;
+									<a target="_self" href="{{file.file_path}}" download="{{file.file_name}}">{{file.file_name}}</a>
+								
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row form-group">
+				<div class="col-lg-12">
+					<span bind-html-compile="DEFAULT_LANGUAGE=='TH'?'ดำรงตำแหน่งวันที่ ':'Date of holding '"></span>{{Palace.position_start_date | date:"MM/dd/yyyy"}} ถึง {{Palace.position_end_date==null || Palace.position_end_date=='0000-00-00'?'ปัจจุบัน':(Palace.position_end_date | date:"MM/dd/yyyy")}}
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+</div>
+<div ng-include src="'views/footer.html'"></div>
