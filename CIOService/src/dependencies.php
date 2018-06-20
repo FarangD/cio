@@ -56,6 +56,10 @@ $container['ProjectController'] = function ($c) {
     return new \App\Controller\ProjectController($c->get('logger'), $c->get('db'));
 };
 
+$container['DocsController'] = function ($c) {
+    return new \App\Controller\DocsController($c->get('logger'), $c->get('db'));
+};
+
 $container['ContactController'] = function ($c) {
     return new \App\Controller\ContactController($c->get('logger'), $c->get('db'));
 };

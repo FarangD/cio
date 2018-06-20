@@ -1,0 +1,66 @@
+<div ng-include src="'views/header.html'"></div>
+
+
+<div ng-show="PAGE == 'UPDATE'">
+	<div class="row form-group">
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			หัวข้อภาษาไทย
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Docs.topic_th">
+		</div>
+		<label class="col-lg-2 col-xs-12 form-control-static">
+			หัวข้อภาษาอังกฤษ
+		</label>
+		<div class="col-lg-4 col-xs-12">
+			<input type="text" class="form-control" ng-model="Docs.topic_en">
+		</div>
+	</div>
+	
+	<div class="row form-group">
+		<label class="col-lg-2 form-control-static">อัพโหลดไฟล์</label>
+		<div class="col-lg-4" >
+			<p class="input-group">
+              <input type="text" readonly="true" class="form-control" ng-model="AttachFile.name" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" ngf-select ng-model="AttachFile" ngf-max-size="25MB"  ngf-model-invalid="AttachFile.invalidFile">เลือก</button>
+              </span>
+            </p>
+		</div>
+		<div class="col-lg-3">
+			<div class="file-alert" ng-show="Docs.invalidFile.$error === 'maxSize'">ขนาดไฟล์ต้องไม่เกิน : {{AttachFile.invalidFile.$errorParam}}</div>
+		</div>
+	</div>
+	<div class="row form-group">
+		<div class="col-lg-12">
+			ไฟล์ปัจจุบัน : <a target="_self" href="{{'../'+Docs.file_path}}" download="{{Docs.file_name}}">{{Docs.file_name}}</a>
+		</div>
+	</div>
+
+	<div class="page-header text-center">
+		<button class="btn btn-info" ng-click="save('docs/update', Docs, AttachFile)">บันทึก</button>
+		<button class="btn btn-default" ng-click="cancelUpdate()">ยกเลิก</button>
+	</div>
+</div>
+<div class="row form-group" ng-show="PAGE == 'MAIN'">
+	<div class="table-responsive">
+		<table class="table table-striped">
+			<caption><button ng-click="add()" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span> เพิ่ม</button></caption>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>หัวข้อ</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="data in DocsList">
+					<td>
+						<button class="btn btn-default btn-xs" ng-click="edit(data)"><span class="glyphicon glyphicon-edit"></span></button>
+						<button class="btn btn-danger btn-xs" ng-click="remove('docs/delete', data.id)"><span class="glyphicon glyphicon-trash"></span></button>
+					</td>
+					<td>{{data.topic_th}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

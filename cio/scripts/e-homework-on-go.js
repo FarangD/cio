@@ -96,6 +96,18 @@ angular.module('e-homework').config(function($routeProvider, $locationProvider) 
 		}
 	})
 
+	.when("/docs", {
+        templateUrl : "views/page/docs.html",
+        controller : "DocsController",
+        resolve : {
+			loadMyCtrl : [ '$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load({
+					files : [ "scripts/controllers/DocsController.js" ]
+				});
+			} ]
+		}
+	})
+
 	.when("/contact", {
         templateUrl : "views/contact/contact.html",
         controller : "ContactController",

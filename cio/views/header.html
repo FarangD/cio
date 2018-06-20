@@ -1,4 +1,4 @@
-<div style="position: absolute; right: 15%; top : 10px; z-index: 9999999;">
+<div style="position: absolute; right: 5%; top : 10px; z-index: 9999999;">
   <a ng-click="changeLanguage('TH')" ng-class="{'selected-language':DEFAULT_LANGUAGE == 'TH'}">TH</a> / <a ng-click="changeLanguage('EN')" ng-class="{'selected-language':DEFAULT_LANGUAGE == 'EN'}">EN</a>
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a ng-click="changeFontSize(1)" style="font-size: 1em;" ng-class="{'selected-language':FONT_SIZE == 1}">A</a>&nbsp;&nbsp;
@@ -46,6 +46,7 @@
               </ul>
           </li>
           <li ng-class="{'active':menu_selected == 'palace'}"><a href="#/palace">ทำเนียบ CIO กระทรวง</a></li>
+          <li ng-class="{'active':menu_selected == 'docs'}"><a href="#/docs">เอกสารเผยแพร่</a></li>
           <li ng-class="{'active':menu_selected == 'contact'}"><a href="#/contact">ข้อมูลการติดต่อ</a></li>
 
           <!--<li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>-->
@@ -87,8 +88,39 @@
     
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" ng-class="!navCollapsed && 'in'">
-      
         <ul class="nav navbar-nav">
+          <li ng-class="{'active':menu_selected == 'about'}"><a href="#/about">เกี่ยวกับซีไอโอ</a></li>
+          <li ng-class="{'active':menu_selected == 'authority'}"><a href="#/authority">อำนาจหน้าที่ของ CIO</a></li>
+          <li ng-class="{'active':menu_selected == 'policy'}"><a href="#/policy">นโยบายและยุทธศาสตร์</a></li>
+          <li ng-class="{'active':menu_selected == 'project'}"><a href="#/project">โครงการ</a></li>
+          <li class="menu-item dropdown" ng-class="{'active':menu_selected == ''}">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CIO ภายใต้กระทรวง <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                  <li class="menu-item dropdown dropdown-submenu" ng-click="newWindows('http://www6.sat.or.th/th/about/executive/ifr_staff.aspx?id=4')">การกีฬาแห่งประเทศไทย</li>
+                  <li class="menu-item dropdown dropdown-submenu" ng-click="newWindows('http://www.dpe.go.th/th/cio')">กรมพละ</li>
+                  <li class="menu-item dropdown dropdown-submenu" ng-click="newWindows('http://www.tourism.go.th/view/1/%E0%B8%A3%E0%B8%AD%E0%B8%87%E0%B8%AD%E0%B8%98%E0%B8%B4%E0%B8%9A%E0%B8%94%E0%B8%B5%E0%B8%81%E0%B8%A3%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%97%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%A2%E0%B8%A7_CIO%E0%B9%80%E0%B8%81%E0%B9%88%E0%B8%B2/TH-TH')">การท่องเที่ยวแห่งประเทศไทย</li>
+                  <li class="menu-item dropdown dropdown-submenu" ng-click="newWindows('http://www.tourism.go.th/view/2/CIO/TH-TH')">กรมการท่องเที่ยว</li>
+                  
+              </ul>
+          </li>
+          <li ng-class="{'active':menu_selected == 'palace'}"><a href="#/palace">ทำเนียบ CIO กระทรวง</a></li>
+          <li ng-class="{'active':menu_selected == 'docs'}"><a href="#/update/docs">เอกสารเผยแพร่</a></li>
+          <li ng-class="{'active':menu_selected == 'contact'}"><a href="#/contact">ข้อมูลการติดต่อ</a></li>
+
+          <!--<li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>-->
+          <!--<li dropdown>
+            <a href="#" dropdown-toggle>Dropdown <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li><a href="#">Separated link</a></li>
+              <li><a href="#">One more separated link</a></li>
+            </ul>
+          </li>-->
+          
+        </ul>
+        <!--<ul class="nav navbar-nav">
           <li ng-class="{'active':menu_selected == 'about'}"><a href="#/about">About CIO</a></li>
           <li ng-class="{'active':menu_selected == 'authority'}"><a href="#/authority">Authority of CIO</a></li>
           <li ng-class="{'active':menu_selected == 'policy'}"><a href="#/policy">Policy and Strategy</a></li>
@@ -115,7 +147,6 @@
             </ul>
           </li>-->
           
-        </ul>
         <!--
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
@@ -125,16 +156,15 @@
         </form>
 
       -->
-        </ul>
       </div><!-- /.navbar-collapse -->
     </nav>
 <div class="row form-group" style="padding-bottom: 20px;">
   <div class="col-lg-5 col-lg-offset-1">
     <div class="row">
-      <div class="col-lg-2 text-center">
+      <div class="col-lg-2 col-xs-3 text-center">
         <img src="../cio-files/img/pin-menu.png">
       </div>
-      <div class="col-lg-10" style="padding: 5px; font-weight: bolder; font-size: 1.3em;">
+      <div class="col-lg-10 col-xs-9" style="padding: 5px; font-weight: bolder; font-size: 1.3em;">
         {{menu_selected_th}}
       </div>
     </div>

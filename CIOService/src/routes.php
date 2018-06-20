@@ -27,6 +27,10 @@ $app->post('/projects/', 'ProjectController:getProject');
 $app->post('/projects/view/', 'ProjectController:getProjectView');
 $app->post('/projects/update/', 'ProjectController:updateProject');
 
+$app->post('/docs/', 'DocsController:getDocs');
+$app->post('/docs/update/', 'DocsController:updateDocs');
+$app->delete('/docs/delete/{id}', 'DocsController:removeDocs');
+
 $app->post('/contacts/', 'ContactController:getContact');
 $app->post('/contacts/update/', 'ContactController:updateContact');
 
