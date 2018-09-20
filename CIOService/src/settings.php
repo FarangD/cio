@@ -17,7 +17,7 @@ return [
             'level' => \Monolog\Logger::INFO,
             'maxFiles' => 90
         ],
-        'db' => [
+     'db' => [
             'driver' => 'mysql',
             'host' => 'localhost',
             'database' => 'cio',
@@ -25,6 +25,7 @@ return [
             'password' => '',
             'charset' => 'utf8',
             'prefix'    => 'cio_',
+            'port' => '3307'
         ]
     ],
 ];
